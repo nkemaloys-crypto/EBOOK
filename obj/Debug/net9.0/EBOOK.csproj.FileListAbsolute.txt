@@ -95,3 +95,4 @@ C:\Users\dimit\EBOOK\obj\Debug\net9.0\refint\EBOOK.dll
 C:\Users\dimit\EBOOK\obj\Debug\net9.0\EBOOK.pdb
 C:\Users\dimit\EBOOK\obj\Debug\net9.0\EBOOK.genruntimeconfig.cache
 C:\Users\dimit\EBOOK\obj\Debug\net9.0\ref\EBOOK.dll
+C:\Users\dimit\EBOOK\obj\Debug\net9.0\EBOOK.csproj.AssemblyReference.cache
