@@ -1,13 +1,24 @@
-namespace eTextBook.Models
+using System.ComponentModel.DataAnnotations;
+
+namespace EBOOK.Models
 {
     public class Presence
     {
         public int Id { get; set; }
-        public string StudentName { get; set; } = "";
-        public bool IsPresent { get; set; }
-        public DateTime Date { get; set; } = DateTime.Now;
 
+        [Required]
+        public int StudentId { get; set; }
+
+        [Required]
+        public Student Student { get; set; } = null!;
+
+        [Required]
         public int CourseId { get; set; }
-        public Course? Course { get; set; }
+
+        [Required]
+        public Course Course { get; set; } = null!;
+
+        [Required]
+        public bool Status { get; set; }
     }
 }

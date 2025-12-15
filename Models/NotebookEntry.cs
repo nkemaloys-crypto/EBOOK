@@ -1,13 +1,28 @@
-namespace eTextBook.Models
+
+using System.ComponentModel.DataAnnotations;
+
+namespace EBOOK.Models
 {
     public class NotebookEntry
     {
         public int Id { get; set; }
-        public DateTime Date { get; set; } = DateTime.Now;
-        public string Content { get; set; } = "";
 
-        // Relation
+        [Required]
+        public string Title { get; set; } = string.Empty;
+
+        [Required]
+        public string Content { get; set; } = string.Empty;
+
+        [Required]
         public int CourseId { get; set; }
-        public Course? Course { get; set; }
+
+        [Required]
+        public Course Course { get; set; } = null!;
+
+        [Required]
+        public int AuthorId { get; set; }
+
+        [Required]
+        public User Author { get; set; } = null!;
     }
 }

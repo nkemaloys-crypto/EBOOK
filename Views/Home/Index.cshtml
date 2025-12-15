@@ -1,8 +1,48 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Accueil - EBOOK Pédagogique";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Bienvenue sur votre EBOOK Pédagogique 👋</h1>
+    <p class="lead">Votre plateforme complète de gestion des classes, des cours et de l'assiduité.</p>
+</div>
+
+<hr />
+
+<div class="row mt-5">
+    
+    <div class="col-md-4">
+        <div class="card shadow-sm h-100">
+            <div class="card-body">
+                <h5 class="card-title text-primary">📚 Gestion des Cours</h5>
+                <p class="card-text">Organisez vos matières, ajoutez des leçons (NotebookEntries) et structurez l'apprentissage pour toutes vos classes.</p>
+                <a href="/Courses" class="btn btn-outline-primary">Voir les Cours</a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4">
+        <div class="card shadow-sm h-100">
+            <div class="card-body">
+                <h5 class="card-title text-success">🧑‍🎓 Suivi des Étudiants</h5>
+                <p class="card-text">Gérez les listes d'élèves, les classes et accédez rapidement aux informations détaillées de chaque étudiant.</p>
+                <a href="/Student" class="btn btn-outline-success">Gérer les Étudiants</a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4">
+        <div class="card shadow-sm h-100">
+            <div class="card-body">
+                <h5 class="card-title text-warning">⏱️ Assiduité & Présence</h5>
+                <p class="card-text">Enregistrez et consultez l'historique de présence de vos élèves pour chaque session de cours.</p>
+                <a href="/Presence" class="btn btn-outline-warning">Enregistrer la Présence</a>
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+<div class="mt-5 text-center">
+    <small class="text-muted">Utilisez le menu de navigation pour explorer toutes les fonctionnalités.</small>
 </div>

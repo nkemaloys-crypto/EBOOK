@@ -1,0 +1,59 @@
+@using EBOOK.Models 
+@model IEnumerable<Student> 
+
+@{
+    ViewData["Title"] = "Liste des Étudiants";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1>🧑‍🎓 Liste des Étudiants</h1>
+    <p>
+        <a asp-action="Create" class="btn btn-primary">➕ Ajouter un nouvel Étudiant</a>
+    </p>
+</div>
+
+<hr />
+
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Classroom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateOfBirth)
+            </th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Classroom.Name) 
+                </td>
+                <td>
+                    @item.DateOfBirth.ToString("dd/MM/yyyy")
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-info">Modifier</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-secondary">Détails</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Supprimer</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
