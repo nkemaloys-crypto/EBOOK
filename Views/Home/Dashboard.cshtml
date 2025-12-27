@@ -1,0 +1,119 @@
+@model IEnumerable<EBOOK.Models.Course>
+
+@{
+    ViewData["Title"] = "Tableau de Bord - EBOOK";
+}
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h1 class="h2 mb-0">📊 Tableau de Bord</h1>
+            <p class="text-muted">Résumé de l'activité pédagogique au @DateTime.Now.ToString("dd/MM/yyyy")</p>
+        </div>
+        <a asp-action="Index" class="btn btn-outline-secondary btn-sm">Retour à l'accueil</a>
+    </div>
+
+    <div class="row mb-5">
+        <div class="col-md-4">
+            <div class="card border-0 shadow-sm bg-primary text-white p-2">
+                <div class="card-body">
+                    <h6 class="text-uppercase small fw-bold opacity-75">Total Étudiants</h6>
+                    <h2 class="display-6 fw-bold">@ViewBag.TotalStudents</h2>
+                    <i class="bi bi-people-fill float-end opacity-25" style="font-size: 2rem; margin-top: -30px;"></i>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card border-0 shadow-sm bg-success text-white p-2">
+                <div class="card-body">
+                    <h6 class="text-uppercase small fw-bold opacity-75">Cours Programmés</h6>
+                    <h2 class="display-6 fw-bold">@ViewBag.TotalCourses</h2>
+                    <i class="bi bi-book float-end opacity-25" style="font-size: 2rem; margin-top: -30px;"></i>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card border-0 shadow-sm bg-danger text-white p-2">
+                <div class="card-body">
+                    <h6 class="text-uppercase small fw-bold opacity-75">Absences du Jour</h6>
+                    <h2 class="display-6 fw-bold">@ViewBag.AbsencesToday</h2>
+                    <i class="bi bi-calendar-x float-end opacity-25" style="font-size: 2rem; margin-top: -30px;"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card shadow-sm border-0">
+                <div class="card-header bg-white py-3">
+                    <h5 class="mb-0 fw-bold"><i class="bi bi-clock-history me-2 text-primary"></i>Dernières sessions ajoutées</h5>
+                </div>
+                <div class="card-body p-0">
+                    <div class="table-responsive">
+                        <table class="table table-hover align-middle mb-0">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Titre du cours</th>
+                                    <th>Classe</th>
+                                    <th class="text-center">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td class="fw-bold">@item.Title</td>
+                                        <td>
+                                            <span class="badge bg-light text-dark border">@item.Classroom?.Name</span>
+                                        </td>
+                                        <td class="text-center">
+                                            <a asp-controller="Presence" asp-action="TakeAttendance" asp-route-courseId="@item.Id" class="btn btn-sm btn-success shadow-sm">
+                                                Faire l'appel
+                                            </a>
+                                        </td>
+                                    </tr>
+                                }
+                                @if (!Model.Any())
+                                {
+                                    <tr>
+                                        <td colspan="3" class="text-center text-muted py-4">Aucun cours disponible pour le moment.</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="card-footer bg-white text-center py-3">
+                    <a asp-controller="Courses" asp-action="Index" class="text-decoration-none fw-bold">Voir tous les cours →</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card shadow-sm border-0 mb-4">
+                <div class="card-header bg-dark text-white py-3">
+                    <h5 class="mb-0 fw-bold">⚡ Raccourcis</h5>
+                </div>
+                <div class="list-group list-group-flush">
+                    <a asp-controller="Student" asp-action="Create" class="list-group-item list-group-item-action py-3">
+                        <i class="bi bi-person-plus me-2 text-primary"></i> Ajouter un Étudiant
+                    </a>
+                    <a asp-controller="Courses" asp-action="Create" class="list-group-item list-group-item-action py-3">
+                        <i class="bi bi-journal-plus me-2 text-success"></i> Planifier un Cours
+                    </a>
+                    <a asp-controller="Presence" asp-action="Index" class="list-group-item list-group-item-action py-3">
+                        <i class="bi bi-clipboard-check me-2 text-warning"></i> Historique des appels
+                    </a>
+                </div>
+            </div>
+
+            <div class="alert alert-info border-0 shadow-sm">
+                <h6 class="alert-heading fw-bold"><i class="bi bi-info-circle me-2"></i>Note</h6>
+                <p class="small mb-0">Ce tableau de bord est actualisé en temps réel selon les données de la base de données.</p>
+            </div>
+        </div>
+    </div>
+</div>

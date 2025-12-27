@@ -1,48 +1,70 @@
 ﻿@{
-    ViewData["Title"] = "Accueil - EBOOK Pédagogique";
+    ViewData["Title"] = "Accueil - EBOOK Pédagogique"; 
 }
 
-<div class="text-center">
-    <h1 class="display-4">Bienvenue sur votre EBOOK Pédagogique 👋</h1>
-    <p class="lead">Votre plateforme complète de gestion des classes, des cours et de l'assiduité.</p>
+<div class="p-5 mb-4 bg-light rounded-3 shadow-sm border-0 text-center">
+    <div class="container-fluid py-5">
+        <h1 class="display-4 fw-bold text-primary">Bienvenue sur EBOOK 👋</h1>
+        <p class="lead mx-auto" style="max-width: 800px;">
+            Votre plateforme complète de gestion pédagogique. Suivez vos élèves, organisez vos cours et gérez l'assiduité en toute simplicité.
+        </p>
+        
+        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mt-4">
+            <a asp-controller="Home" asp-action="Dashboard" class="btn btn-primary btn-lg px-5 shadow">
+                <i class="bi bi-speedometer2 me-2"></i> Accéder au Tableau de Bord
+            </a>
+        </div>
+    </div>
 </div>
 
-<hr />
-
-<div class="row mt-5">
-    
-    <div class="col-md-4">
-        <div class="card shadow-sm h-100">
-            <div class="card-body">
-                <h5 class="card-title text-primary">📚 Gestion des Cours</h5>
-                <p class="card-text">Organisez vos matières, ajoutez des leçons (NotebookEntries) et structurez l'apprentissage pour toutes vos classes.</p>
-                <a href="/Courses" class="btn btn-outline-primary">Voir les Cours</a>
+<div class="container">
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="card shadow-sm h-100 border-0 transition-hover">
+                <div class="card-body text-center">
+                    <div class="display-5 text-primary mb-3">📚</div>
+                    <h5 class="card-title fw-bold">Gestion des Cours</h5>
+                    <p class="card-text text-muted">Organisez vos matières, structurez vos leçons et gérez les contenus pédagogiques.</p>
+                    <a asp-controller="Courses" asp-action="Index" class="btn btn-outline-primary w-100">Voir les Cours</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4">
+            <div class="card shadow-sm h-100 border-0 transition-hover">
+                <div class="card-body text-center">
+                    <div class="display-5 text-success mb-3">🧑‍🎓</div>
+                    <h5 class="card-title fw-bold">Suivi des Étudiants</h5>
+                    <p class="card-text text-muted">Gérez les dossiers des élèves, leurs classes et accédez rapidement à leurs informations.</p>
+                    <a asp-controller="Student" asp-action="Index" class="btn btn-outline-success w-100">Gérer les Étudiants</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4">
+            <div class="card shadow-sm h-100 border-0 transition-hover">
+                <div class="card-body text-center">
+                    <div class="display-5 text-warning mb-3">⏱️</div>
+                    <h5 class="card-title fw-bold">Assiduité & Présence</h5>
+                    <p class="card-text text-muted">Faites l'appel en un clic et consultez l'historique de présence de chaque session.</p>
+                    <a asp-controller="Presences" asp-action="Index" class="btn btn-outline-warning w-100">Enregistrer la Présence</a>
+                </div>
             </div>
         </div>
     </div>
-    
-    <div class="col-md-4">
-        <div class="card shadow-sm h-100">
-            <div class="card-body">
-                <h5 class="card-title text-success">🧑‍🎓 Suivi des Étudiants</h5>
-                <p class="card-text">Gérez les listes d'élèves, les classes et accédez rapidement aux informations détaillées de chaque étudiant.</p>
-                <a href="/Student" class="btn btn-outline-success">Gérer les Étudiants</a>
-            </div>
-        </div>
+
+    <div class="mt-5 pt-4 text-center border-top">
+        <p class="text-muted small">
+            <i class="bi bi-info-circle me-1"></i> 
+            Astuce : Utilisez le bouton <strong>Tableau de Bord</strong> en haut pour voir les statistiques globales de l'établissement.
+        </p>
     </div>
-    
-    <div class="col-md-4">
-        <div class="card shadow-sm h-100">
-            <div class="card-body">
-                <h5 class="card-title text-warning">⏱️ Assiduité & Présence</h5>
-                <p class="card-text">Enregistrez et consultez l'historique de présence de vos élèves pour chaque session de cours.</p>
-                <a href="/Presence" class="btn btn-outline-warning">Enregistrer la Présence</a>
-            </div>
-        </div>
-    </div>
-    
 </div>
 
-<div class="mt-5 text-center">
-    <small class="text-muted">Utilisez le menu de navigation pour explorer toutes les fonctionnalités.</small>
-</div>
+<style>
+    .transition-hover:hover {
+        transform: translateY(-5px);
+        transition: transform 0.3s ease;
+        box-shadow: 0 1rem 3rem rgba(0,0,0,.175)!important;
+    }
+</style>

@@ -1,0 +1,51 @@
+@model IEnumerable<EBOOK.Models.Presence>
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>📋 Historique des Présences</h2>
+        <a asp-controller="Courses" asp-action="Index" class="btn btn-secondary">Retour aux Cours</a>
+    </div>
+
+    <div class="card shadow-sm border-0">
+        <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0">
+                <thead class="table-light">
+                    <tr>
+                        <th>Date & Heure</th>
+                        <th>Étudiant</th>
+                        <th>Cours</th>
+                        <th class="text-center">Statut</th>
+                        <th>Remarques</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Date.ToString("dd/MM/yyyy HH:mm")</td>
+                            
+                            <td>
+                                <strong>@(item.Student?.FirstName ?? "N/A") @(item.Student?.LastName ?? "")</strong>
+                            </td>
+                            
+                            <td>@(item.Course?.Title ?? "Cours supprimé")</td>
+                            
+                            <td class="text-center">
+                                @if (item.IsPresent)
+                                {
+                                    <span class="badge rounded-pill bg-success">Présent</span>
+                                }
+                                else
+                                {
+                                    <span class="badge rounded-pill bg-danger">Absent</span>
+                                }
+                            </td>
+                            
+                            <td class="text-muted small">@(item.Remarks ?? "-")</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

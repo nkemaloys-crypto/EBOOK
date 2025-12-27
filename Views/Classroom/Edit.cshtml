@@ -1,0 +1,40 @@
+@model EBOOK.Models.Classroom
+
+@{
+    ViewData["Title"] = "Modifier la Classe";
+}
+
+<h1>Modifier la Classe</h1>
+
+<h4>@Model.Name</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            
+            <input type="hidden" asp-for="Id" />
+            
+            <div class="form-group mb-3">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group mb-3">
+                <label asp-for="Year" class="control-label">Année Scolaire</label>
+                <input asp-for="Year" class="form-control" />
+                <span asp-validation-for="Year" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group mt-4">
+                <input type="submit" value="Enregistrer les modifications" class="btn btn-warning" />
+                <a asp-action="Index" class="btn btn-secondary">Annuler</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

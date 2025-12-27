@@ -1,0 +1,71 @@
+@model EBOOK.Models.Student
+
+@{
+    ViewData["Title"] = "Détails de l'Étudiant";
+}
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h1>👤 Profil de l'Étudiant</h1>
+        <div>
+            <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Modifier</a>
+            <a asp-action="Index" class="btn btn-secondary">Retour à la liste</a>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-5">
+            <div class="card shadow-sm mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">Informations Personnelles</h5>
+                </div>
+                <div class="card-body">
+                    <dl class="row mb-0">
+                        <dt class="col-sm-5">Nom :</dt>
+                        <dd class="col-sm-7">@Model.LastName</dd>
+
+                        <dt class="col-sm-5">Prénom :</dt>
+                        <dd class="col-sm-7">@Model.FirstName</dd>
+
+                        <dt class="col-sm-5">Date de Naissance :</dt>
+                        <dd class="col-sm-7">@Model.DateOfBirth.ToString("dd MMMM yyyy")</dd>
+
+                        <dt class="col-sm-5">Classe :</dt>
+                        <dd class="col-sm-7">
+                            <span class="badge bg-light text-dark border">
+                                @(Model.Classroom?.Name ?? "Non assignée")
+                            </span>
+                        </dd>
+
+                        <dt class="col-sm-5">Rôle :</dt>
+                        <dd class="col-sm-7">
+                            @if (Model.IsDelegate)
+                            {
+                                <span class="badge bg-info text-dark">⭐ Délégué</span>
+                            }
+                            else
+                            {
+                                <span class="text-muted">Étudiant régulier</span>
+                            }
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-7">
+            <div class="card shadow-sm border-danger">
+                <div class="card-header bg-danger text-white">
+                    <h5 class="mb-0">Résumé des Absences</h5>
+                </div>
+                <div class="card-body text-center">
+                    @* Note : Pour afficher le vrai compte, il faudra passer par le ViewBag ou inclure les présences *@
+                    <p class="text-muted">Consultez l'historique global pour le détail des sessions manquées.</p>
+                    <a asp-controller="Presence" asp-action="Index" class="btn btn-outline-danger btn-sm">
+                        Voir l'historique complet des présences
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

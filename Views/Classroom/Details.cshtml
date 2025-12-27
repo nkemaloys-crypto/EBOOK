@@ -1,0 +1,57 @@
+@model EBOOK.Models.Classroom
+
+@{
+    ViewData["Title"] = "Détails de la Classe";
+}
+
+<h1>Détails de la Classe : @Model.Name</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-3">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "col-sm-9">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class = "col-sm-3">
+            @Html.DisplayNameFor(model => model.Year)
+        </dt>
+        <dd class = "col-sm-9">
+            @Html.DisplayFor(model => model.Year)
+        </dd>
+    </dl>
+    
+    @if (Model.Students != null && Model.Students.Any())
+    {
+        <h3>Élèves (@Model.Students.Count)</h3>
+        <ul class="list-group mb-4">
+            @foreach (var student in Model.Students.OrderBy(s => s.LastName))
+            {
+                <li class="list-group-item">
+                    <a asp-controller="Student" asp-action="Details" asp-route-id="@student.Id">
+                        @student.LastName @student.FirstName
+                    </a>
+                </li>
+            }
+        </ul>
+    }
+    
+    @if (Model.Courses != null && Model.Courses.Any())
+    {
+        <h3>Cours (@Model.Courses.Count)</h3>
+        <ul class="list-group mb-4">
+            @foreach (var course in Model.Courses.OrderBy(c => c.Title))
+            {
+                <li class="list-group-item">
+                    @course.Title
+                </li>
+            }
+        </ul>
+    }
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Modifier</a> |
+    <a asp-action="Index" class="btn btn-secondary">Retour à la Liste</a>
+</div>

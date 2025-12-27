@@ -3,6 +3,7 @@ using System;
 using EBOOK.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EBOOK.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251223145318_UpdateFinalStructure")]
+    partial class UpdateFinalStructure
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "10.0.1");
@@ -181,9 +184,6 @@ namespace EBOOK.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<bool>("IsAdmin")
-                        .HasColumnType("INTEGER");
-
                     b.Property<bool>("IsDelegate")
                         .HasColumnType("INTEGER");
 
@@ -204,7 +204,6 @@ namespace EBOOK.Migrations
                             ClassroomId = 1,
                             DateOfBirth = new DateTime(2007, 5, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FirstName = "Alice",
-                            IsAdmin = false,
                             IsDelegate = false,
                             LastName = "Mang"
                         },
@@ -214,7 +213,6 @@ namespace EBOOK.Migrations
                             ClassroomId = 1,
                             DateOfBirth = new DateTime(2006, 11, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FirstName = "Bruno",
-                            IsAdmin = false,
                             IsDelegate = false,
                             LastName = "Leukeng"
                         },
@@ -224,7 +222,6 @@ namespace EBOOK.Migrations
                             ClassroomId = 1,
                             DateOfBirth = new DateTime(2007, 1, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FirstName = "Chloé",
-                            IsAdmin = false,
                             IsDelegate = false,
                             LastName = "Pagou"
                         });

@@ -1,0 +1,36 @@
+@model EBOOK.Models.Classroom
+
+@{
+    ViewData["Title"] = "Supprimer la Classe";
+}
+
+<h1>Supprimer</h1>
+
+<h3 class="text-danger">Êtes-vous sûr de vouloir supprimer la classe : @Model.Name ?</h3>
+<p class="alert alert-warning mt-3">
+    ⚠️ **ATTENTION :** La suppression de cette classe entraînera la perte de **@Model.Students.Count** étudiant(s) et de tous les cours associés, sauf si la suppression en cascade est configurée dans la base de données.
+</p>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-3">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "col-sm-9">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class = "col-sm-3">
+            @Html.DisplayNameFor(model => model.Year)
+        </dt>
+        <dd class = "col-sm-9">
+            @Html.DisplayFor(model => model.Year)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Confirmer la Suppression" class="btn btn-danger" /> |
+        <a asp-action="Index" class="btn btn-secondary">Annuler</a>
+    </form>
+</div>
